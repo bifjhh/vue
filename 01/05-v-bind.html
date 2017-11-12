@@ -11,10 +11,12 @@
 
 <body>
     <div id="box">
-        <input type="button" value="点击" v-on:click="add">
-        
-    <div v-html="msg"></div>
-    <div v-text="msg"></div>
+
+      <input type="text" :value="msg">  
+      <input type="text" v-bind:value="msg">  
+      <a v-bind="{href:'http://www.baidu.com/'+get}">跳转</a>
+
+   <!-- 但标签可以通过v-bind来使用差值表达式 的内容 -->
 
 
     </div>
@@ -22,15 +24,13 @@
         new Vue({
             el: '#box',
             data: {
-                msg: '黑马'
+                msg: '黑马',
+                get:'s?ie=utf-8&f=8&rsv_bp=0&rsv_idx=1&tn=baidu&wd=黑马程序员&rsv_pq=c7fc5a380000a929&rsv_t=4d8bIhduHGhyNvKVXLZ%2FnmsNgf5ARukW2G3aX%2FN7hfkO40s7yWpczoscxJA&rqlang=cn&rsv_enter=1&rsv_sug3=9&rsv_sug1=14&rsv_sug7=100'
             },
             methods: {
                 add: function () {
                     // console.log(this.msg);
                     console.log(this);
-                },
-                'ifl': function (str) {
-                    return str == '黑马'
                 }
 
             }
