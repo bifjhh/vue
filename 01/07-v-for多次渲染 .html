@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-for 多次数据渲染</title>
+    <script src="../lib/vue221.js"></script>
+    <!-- <script src="../lib/vue1026.js"></script> -->
+</head>
+
+<body>
+    <div id="box">
+        <ul>
+            <!-- <li v-for="v in arr" track-by="$index">
+                {{v}}
+            </li> -->
+            <!-- <li v-for="(v,i) in arr" track-by="$index">
+                索引:{{ i }}----值:{{ v }}
+            </li> -->
+            <li v-for="(v,k) in user" track-by="$index">
+                索引:{{ k }}----值:{{ v }}
+            </li>
+            <!-- 1.0版本的写法基本相同 只是 键和值 的顺序相反而已 -->
+            <!--<li v-for="(i,v) in arr" track-by="$index">
+                索引:{{i}}----值:{{v}}
+            </li>-->
+            <!-- <li v-for="(k,v) in user">
+                索引:{{k}}----值:{{v}}
+            </li> -->
+        </ul>
+    </div>
+    <script>
+        new Vue({
+            el: '#box',
+            data: {
+                arr: [1, 2, 3, 4, 3],
+                user: {
+                    uname: 'itcast',
+                    age: 10
+                }
+            },
+            methods: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>
