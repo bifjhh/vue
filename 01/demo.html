@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>案例练习</title>
+    <script src="../lib/vue221.js"></script>
+    <style>
+        #tb {
+            width: 800px;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+        #tb th{
+			background-color: rgb(35, 150, 150);
+			color:white;
+			font-size: 16px;
+			padding: 5px;
+			text-align: center;
+			border: 1px solid black;
+		}
+		#tb td{
+		
+			padding: 5px;
+			text-align: center;
+			border: 1px solid black;
+            background-color: #e0e0e0;
+		}
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <table id="tb">
+            <tr>
+                <th>编号</th>
+                <th>名称</th>
+                <th>创建时间</th>
+                <th>操作</th>
+            </tr>
+            <tr v-for="v in list">
+                <td>{{v.id}}</td>
+                <td>{{v.name}}</td>
+                <td>{{v.ctime}}</td>
+                <td>
+                    <a href="javascript:;">删除</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                list: [{
+                    "id": 1,
+                    "name": '奔驰',
+                    "ctime": new Date
+                }, ]
+            },
+
+        })
+    </script>
+</body>
+
+</html>
