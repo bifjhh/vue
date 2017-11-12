@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-on修饰符</title>
+    <script src="../lib/vue221.js"></script>
+    <!-- <script src="../lib/vue1026.js"></script> -->
+</head>
+
+<body>
+    <div id="app">
+        <a @click.stop href="http://www.baidu.com">阻止冒泡</a>
+        <a @click.prevent href="http://www.baidu.com">阻止默认行为</a>
+        <form @submit.prevent>
+            <input @click="alt" type="submit" value="提交">
+        </form>
+    </div>
+    <script>
+        /* 
+        .stop - 调用 event.stopPropagation()。
+        .prevent - 调用 event.preventDefault()。
+        .capture - 添加事件侦听器时使用 capture 模式。
+        .self - 只当事件是从侦听器绑定的元素本身触发时才触发回调。
+        .{keyCode | keyAlias} - 只当事件是从特定键触发时才触发回调。
+        .native - 监听组件根元素的原生事件。
+        .once - 只触发一次回调。
+        .left - (2.2.0) 只当点击鼠标左键时触发。
+        .right - (2.2.0) 只当点击鼠标右键时触发。
+        .middle - (2.2.0) 只当点击鼠标中键时触发。
+        .passive - (2.3.0) 以 { passive: true } 模式添加侦听器
+               
+               */
+        var app = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            methods: {
+                alt: function () {
+                    alert("点击了");
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
