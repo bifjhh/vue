@@ -9,7 +9,7 @@
 - MVVM要解决的问题是将业务逻辑代码与视图代码进行完全分离，使各自的职责更加清晰，后期代码维护更加简单
 
 - 用图解的形式分析Ajax请求回来数据后直接操作Dom来达到视图的更新的缺点，以及使用MVVM模式是如何来解决这个缺点的
-- ​
+- 
 ####使用   
       1. 导入vuejs
         <script src="vue.js"></script>
@@ -24,7 +24,7 @@
 	</div>
 </body>
    ```
-
+   
    ```javascript
          //vm :叫做MVVM中的 View Model
           var vm = new Vue({
@@ -34,7 +34,7 @@
           }
       });
    ```
-
+   
 ###vue指令
 
 - 注册事件
@@ -60,7 +60,7 @@
  ```
 - 差值表达式
     + 使用vue内定义好的数据渲染到Vew层 页面曾
-      +
+    +
 - 解决闪烁
         v-text=""
         v-html=""
@@ -98,3 +98,32 @@
     <div v-for="(val, key) in object"></div>
     <div v-for="(val, key, index) in object"></div>
     ```
+- v-if  
+    + 根据表达式的值的真假条件渲染元素。在切换时元素及它的数据绑定 / 组件被销毁并重建
+- v-else 
+    + 前一兄弟元素必须有 v-if 或 v-else-if  
+
+```html
+    <div v-if="Math.random() > 0.5">
+        Now you see me
+    </div>
+    <div v-else>
+        Now you don't
+    </div>
+```
+- v-show 
+    + 根据表达式之真假值，切换元素的 display CSS 属性。
+- v-on
+    + 缩写：@
+    + 修饰符：
+      +  .stop - 调用 event.stopPropagation()。
+      +  .prevent - 调用 event.preventDefault()。
+      +  .capture - 添加事件侦听器时使用 capture 模式。
+      +  .self - 只当事件是从侦听器绑定的元素本身触发时才触发回调。
+      +  .{keyCode | keyAlias} - 只当事件是从特定键触发时才触发回调。
+      +  .native - 监听组件根元素的原生事件。
+      +  .once - 只触发一次回调。
+      +  .left - (2.2.0) 只当点击鼠标左键时触发。
+      +  .right - (2.2.0) 只当点击鼠标右键时触发。
+      +  .middle - (2.2.0) 只当点击鼠标中键时触发。
+      +  .passive - (2.3.0) 以 { passive: true } 模式添加侦听器
