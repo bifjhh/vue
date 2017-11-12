@@ -6,33 +6,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>案例练习</title>
-    <script src="../lib/vue221.js"></script>
+    <!-- <script src="../lib/vue221.js"></script> -->
+    <script src="../lib/vue1026.js"></script>
     <style>
         #tb {
             width: 800px;
             border-collapse: collapse;
             margin: 20px auto;
         }
-        #tb th{
-			background-color: rgb(35, 150, 150);
-			color:white;
-			font-size: 16px;
-			padding: 5px;
-			text-align: center;
-			border: 1px solid black;
-		}
-		#tb td{
-		
-			padding: 5px;
-			text-align: center;
-			border: 1px solid black;
+
+        #tb th {
+            background-color: rgb(35, 150, 150);
+            color: #fff;
+            font-size: 16px;
+            padding: 5px;
+            text-align: center;
+            border: 1px solid #000;
+        }
+
+        #tb td {
+
+            padding: 5px;
+            text-align: center;
+            border: 1px solid #000;
             background-color: #e0e0e0;
-		}
+        }
+
+        .ip {
+            width: 800px;
+            text-align: center;
+            margin: 0 auto;
+        }
     </style>
 </head>
 
 <body>
     <div id="app">
+        <div class="ip">
+            编号：
+            <input type="number" v-model="id"> 名称：
+            <input type="text" v-model="name">
+            <input @click="add" type="button" value="添加品牌">
+            <input v-model="sname" type="text" placeholder="请输搜索内容">
+            <input @click="seek" type="button" value="搜索">
+        </div>
         <table id="tb">
             <tr>
                 <th>编号</th>
@@ -40,26 +57,84 @@
                 <th>创建时间</th>
                 <th>操作</th>
             </tr>
-            <tr v-for="v in list">
+            <tr v-if="list.length==0">
+                <!-- 使用v-if 如果值为false则代表存在数据，不会渲染该标签 -->
+                <td colspan="4">当前列表无数据</td>
+            </tr>
+            <tr v-for="v in list  | filterBy bin in 'name'">
                 <td>{{v.id}}</td>
                 <td>{{v.name}}</td>
                 <td>{{v.ctime}}</td>
                 <td>
-                    <a href="javascript:;">删除</a>
+                    <a @click="remove(v.id)" href="javascript:;">删除</a>
                 </td>
             </tr>
         </table>
     </div>
+
     <script>
         var app = new Vue({
             el: '#app',
             data: {
+                id: '',
+                name: '',
+                sname: '',
+                bin: '',
                 list: [{
                     "id": 1,
-                    "name": '奔驰',
-                    "ctime": new Date
-                }, ]
+                    "name": 'Jeep',
+                    "ctime": new Date()
+                }, ],
+
             },
+            methods: {
+                // 添加数据
+                add: function () {
+                    // 判断用户的编号是否重复
+                    for (var i = 0; i < this.list.length; i++) {
+                        if (this.list[i].id === this.id - 0) {
+                            alert("编号重复，请重新输入");
+                            this.name = "";
+                            this.id = "";
+                            return;
+                            // 重复则弹出警告，停止运行函数
+                        }
+
+                    }
+                    // 判断用户是否输入了名称
+                    if (this.name) {
+                        var newName = {
+                            "id": this.id,
+                            "name": this.name,
+                            "ctime": new Date
+                        }
+                        this.list.push(newName);
+                        this.name = "";
+                        this.id = "";
+                    } else {
+                        alert("请输入名称");
+                        return;
+                    }
+
+                },
+                // 删除数据方法
+                remove: function (id) {
+                    if (!confirm('是否删除')) {
+                        return;
+                    }
+                    for (var i in this.list) {
+                        // console.log(i);
+                        if (this.list[i].id == id) {
+                            this.list.splice(i, 1);
+                        }
+                    }
+
+                },
+                seek: function () {
+                    console.log(this.sname);
+                    this.bin = this.sname;
+                }
+            }
 
         })
     </script>
