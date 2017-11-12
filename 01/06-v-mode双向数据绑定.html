@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>06-v-mode双向数据绑定</title>
+    <script src="../lib/vue221.js"></script>
+</head>
+
+<body>
+    <div id="box">
+        <input type="text" v-model.trim.change="name">
+        <input type="text" v-model.trim="pws">
+        <input type="number" v-model.number="age">
+        <input type="button" @click="alt" value="提交">
+<!-- .lazy 在默认情况下，v-model 在 input 事件中同步输入框的值与数据 (除了 上述 IME 部分)，但你可以添加一个修饰符 lazy ，从而转变为在 change 事件中同步： -->
+<!-- .number 如果想自动将用户的输入值转为 Number 类型 (如果原值的转换结果为 NaN 则返回原值)，可以添加一个修饰符 number 给 v-model 来处理输入值： -->
+<!-- .trim 如果要自动过滤用户输入的首尾空格，可以添加 trim 修饰符到 v-model 上过滤输入： -->
+    </div>
+    <script>
+        new Vue({
+            el: '#box',
+            data: {
+                name: '',
+                pws:'',
+                age:"0"
+                
+            },
+            methods: {
+             alt:function(){
+                 alert(this.name+"--"+this.pws + "--" + (typeof this.age));
+             }   
+
+            }
+        })
+    </script>
+</body>
+
+</html>
