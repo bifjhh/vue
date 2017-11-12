@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../lib/vue221.js"></script>
+</head>
+
+<body>
+    <div id="box">
+        {{msg}}
+        <input type="button" value="点击" v-on:click="add">
+    </div>
+    <script>
+        new Vue({
+            el: '#box',
+            data: {
+                msg: '黑马'
+            },
+            methods:{
+                add:function(){
+                    // console.log(this.msg);
+                    console.log(this);
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>
