@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-if-v-show</title>
+    <script src="../lib/vue221.js"></script>
+    <!-- <script src="../lib/vue1026.js"></script> -->
+</head>
+
+<body>
+    <div id="box">
+        <h1 v-if="isshow">v-if </h1>
+        <h1 v-show="isshow">v-show </h1>
+        <button type="button" @click="toggle"> 切换显示</button>
+    </div>
+    <script>
+        new Vue({
+            el: '#box',
+            data: {
+               isshow:true,
+            },
+            methods: {
+                toggle: function () {
+                    this.isshow=!this.isshow;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
