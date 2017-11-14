@@ -28,7 +28,9 @@
                 var minutes = input.getMinutes().toString().padStart(2, 0);
                 var seconds = input.getSeconds().toString().padStart(2, 0);
                 // 返回计算后的数据
+
                 if (nyr == 'yyyy-mm-dd' && sfm == 'HH:mm:ss') {
+                    // 判断传入的参数，根据参数来返回数据
                     return res = year + "年-" + month + "月-" + day + "日" + "---" + hours + ":" + minutes +
                         ":" + seconds;
                 } else {
