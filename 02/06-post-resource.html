@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>post-resource</title>
+    <script src="../lib/vue1026.js"></script>
+    <script src="../lib/resource.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="getdata">post请求</button>
+        <p>{{obj | json}}</p>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                obj: null,
+            },
+            methods:{
+                getdata:function(){
+                    // 请求的url http://vue.studyit.io/api/getprodlist
+                    var url='http://vue.studyit.io/api/addproduct';
+                    this.$http.post(url,{name:'bcc'},{emulateJSON:true})//发出请求
+                    .then(function(response){
+                        //获取服务器返回的数据
+                        console.log(response.body);
+                        this.obj= response.body;
+                    })
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
