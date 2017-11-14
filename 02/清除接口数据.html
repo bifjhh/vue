@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>清空数据</title>
+    <script src="../lib/vue1026.js"></script>
+    <script src="../lib/resource.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="remove">删除</button>
+        <p>{{obj | json}}</p>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+               
+            },
+            methods: {
+                remove: function () {
+                   
+                    for(var i = 25977;i<999999;i++){
+                        var url = "http://vue.studyit.io/api/delproduct/" + i;
+                        console.log(url);
+                        this.$http.get(url) //发出请求
+                            .then(function (response) {
+                                if (response.body.status != 0) {
+                                    alert(response.body.message);
+                                    return;
+                                }
+                            })
+                    }
+
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -106,7 +106,6 @@
                 sname: '',
                 bin: '',
                 list: [],
-
             },
             created: function () {
                 this.getlist()
@@ -114,19 +113,6 @@
             methods: {
                 // 添加数据
                 add: function () {
-                    /*     // 判断用户的编号是否重复
-                        // for (var i = 0; i < this.list.length; i++) {
-                        //     if (this.list[i].id === this.id - 0) {
-                        //         alert("编号重复，请重新输入");
-                        //         this.name = "";
-                        //         this.id = "";
-                        //         return;
-                        //         // 重复则弹出警告，停止运行函数
-                        //     }
-
-                        // }
-                        // 判断用户是否输入了名称 */
-
                     if (this.name) {
 
                         this.$http.post('http://vue.studyit.io/api/addproduct', {
@@ -145,8 +131,6 @@
                         alert("请输入名称");
                         return;
                     }
-
-
                 },
                 // 删除数据方法
                 remove: function (id) {
@@ -163,7 +147,6 @@
                             }
                              this.getlist();
                         })
-
                 },
                 getlist: function () {
                     console.log(this.list);
@@ -174,6 +157,7 @@
                                 return;
                             }
                             this.list = response.body.message;
+                            this.name='';
                         })
                 },
 
