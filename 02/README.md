@@ -41,5 +41,24 @@ Vue.directive('指令名',function(){
     // this.expression 是指设置的属性值，相当于变量
 })
 ``` 
+#### 使用vue-resource
+- $http发送get请求
+- $http发送post请求
+- $http发送jsonp请求
+
+#### 生命周期
+- 所有的生命周期钩子自动绑定 this 上下文到实例中
+- 1.0 
+    + init
+    + created
+    + beforeCompile
+    + compiled
+    + ready
+    + attached
+- 2.0
+    + beforeCreate
+    + created
+    + beforeMount
+    + mounted
 
 
