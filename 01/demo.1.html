@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>练习2</title>
+    <script src="../lib/vue1026.js"></script>
+    <style>
+        #tb {
+            width: 800px;
+            background-color: #cccccc;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+
+        #tb th {
+            background-color: #0ff;
+            color: rgb(70, 63, 63);
+            font-size: 16px;
+            padding: 5px;
+            text-align: center;
+            border: 1px solid #000;
+        }
+
+        #tb td {
+            padding: 5px;
+            text-align: center;
+            border: 1px solid #000;
+            background-color: #e0e0e0;
+        }
+
+        #ip {
+            width: 800px;
+            text-align: center;
+            margin: 20px auto;
+            background-color: #cfcfcf;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div id="ip">
+            编号：
+            <input v-model="id" type="number"> 名称：
+            <input v-model="name" type="text">
+            <input @click="add" type="button" value="添加">
+            
+        </div>
+        <table id="tb">
+            <tr id="td">
+                <th>编号</th>
+                <th>名称</th>
+                <th>创建日期</th>
+                <th>操作</th>
+            </tr>
+            <tr v-for="v in arr">
+                <td>{{v.id}}</td>
+                <td>{{v.name}}</td>
+                <td>{{v.time}}</td>
+                <td>
+                    <a @click="remove(v.id)" href="javascript:;">删除</a>
+                </td>
+            </tr>
+            <tr v-if="arr.length==0">
+                <td colspan="4">当前列表无数据</td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                id: '',
+                name: '',
+                arr: [{
+                    "id": 1,
+                    "name": "Jeep",
+                    "time": new Date()
+                }]
+            },
+            methods: {
+                add: function () {
+                    var obj = {
+                        "id": this.id,
+                        "name": this.name,
+                        "time": new Date()
+                    }
+                    this.arr.push(obj);
+                    this.id = '';
+                    this.name = '';
+                },
+                remove: function (id) {
+                    for (var k in this.arr) {
+                        if (this.arr[k].id == id) {
+                            this.arr.splice(k, 1)
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
