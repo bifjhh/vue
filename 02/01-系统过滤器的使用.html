@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>系统过滤器的使用步骤</title>
+    <script src="../lib/vue1026.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{list | json}}
+    </div>
+    <script>
+        // 系统过滤器只存在于1.0版本当中，在2.0版本中使用过滤器则需要使用自定义过滤器
+        new Vue({
+            el:'#app',
+            data:{
+                list:[
+                    {uname:'itcast'},
+                    {uname:'lllll'}
+                    ]
+            },
+            methods:{
+
+            }
+        })
+    </script>
+</body>
+</html>
