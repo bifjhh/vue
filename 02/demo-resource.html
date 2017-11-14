@@ -138,7 +138,6 @@
                     //     return;
                     // }
                     var url = "http://vue.studyit.io/api/delproduct/"+id;
-                    console.log(url);
                     this.$http.get(url)//发出请求
                         .then(function (response) {
                             if (response.body.status != 0) {
@@ -149,7 +148,6 @@
                         })
                 },
                 getlist: function () {
-                    console.log(this.list);
                     this.$http.get("http://vue.studyit.io/api/getprodlist")
                         .then(function (response) {
                             if (response.body.status != 0) {
