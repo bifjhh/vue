@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>系统过滤器的使用步骤</title>
+    <script src="../lib/vue1026.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{time | datefmt}}
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                time: new Date(),
+            },
+            methods: {
+
+            },
+            filters: {
+                datefmt: function (input) {
+                    // input 是自定义过滤器的默认参数，input的值永远都是取自于 | 左边的内容
+                    // 过滤器的逻辑 将input的值格式化yyyy-mm-dd 字符串格式输出
+                    var res = "";
+                    var year = input.getFullYear().toString().padStart(2, 0);
+                    var month = (input.getMonth() + 1).toString().padStart(2, 0);
+                    // month = month > 9 ? month : "0" + month;
+                    var day = input.getDate().toString().padStart(2, 0);
+                    // day = day > 9 ? day : "0" + day;
+                    var hours = input.getHours().toString().padStart(2, 0);
+                    // hours = hours > 9 ? hours : "0" + hours;
+                    var minutes = input.getMinutes().toString().padStart(2, 0);
+                    // minutes = minutes > 9 ? minutes : "0" + minutes;
+                    var seconds = input.getSeconds().toString().padStart(2, 0);
+                    // seconds = seconds > 9 ? seconds : "0" + seconds;
+                    // 返回计算后的数据
+
+                    return res = year + "年-" + month + "月-" + day + "日" + "---" + hours + ":" + minutes +
+                        ":" + seconds;
+
+                }
+            }
+            // 在某一个vue对象内部定义的过滤器称之为私有过滤器
+            // 这种过滤器只有在当前vue对象el指定的监管的区域有用
+
+        })
+    </script>
+</body>
+
+</html>
