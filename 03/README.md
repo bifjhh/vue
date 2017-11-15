@@ -24,7 +24,7 @@ Vue.component('my-component', MyComponent)
 Vue.component('my-component', {
   // 选项
 })
-``` 
+```
 ###### 快捷方式
 ```javascript
 Vue.component('名称',{
@@ -32,8 +32,51 @@ Vue.component('名称',{
 
 })
 ```
-*注意*
+        *注意*
 - 在2.0版本中创建组件时，需要使用一个根元素进行包裹
-##### 子组件
-- 就是在父级组件的内部再次注册组件
+
+##### 局部注册---子组件
+- 不需要全局注册每个组件。可以让组件只能用在其它组件内，用实例选项 components 注册：
+- 就是在组件的内部再次注册组件
 - 使用时也必须在父级组件的内部使用
+
+#### 动态切换组件
+```html
+<!-- 使用component标签的 :is 绑定一个值 该 值为一个变量，用以切换显示组件 -->
+<component :is="urlName"></component>
+<!-- is内的值为哪一个组件的名称，显示的就是哪一个组件 -->
+```
+
+#### prop
+- 使用 Props 传递数据给子组件
+- 组件实例的作用域是孤立的。这意味着不能并且不应该在子组件的模板内直接引用父组件的数据。可以使用 props 把数据传给子组件。
+    + 子组件接收数据需要显式地用 props 选项 声明 props：
+    + prop 默认是单向绑定：当父组件的属性变化时，将传导给子组件，但是反过来不会
+
+```html
+<body>
+    <template id="one">
+        <div>{{ip}}</div>
+    </template>
+    <div id="app">
+        <login :ip="age"></login>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {age:18,},
+            components: {
+                'login': {template: '#one',props:['ip']}
+                },// props 接收的名称 要与 组件内绑定的名称相同
+        })
+    </script>
+</body>
+```
+- ![001_父组件往子组件传值](../images/001_父组件往子组件传值.png)
+
+#### 子组件向父组件传值
+- 在子组件内声明并绑定一个方法
+- 该方法调用时创建自定义事件this.$emit();
+- 子组件通过自定义事件，将值通过事件方法传送到父组件内部用于接收的方法内，完成值的传递
+-
+- ![002_子组件往父组件传值](../images/002_子组件往父组件传值.png)
