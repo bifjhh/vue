@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>子组件接收父组件的传值</title>
+    <script src="../lib/vue221.js"></script>
+</head>
+
+
+<body>
+    <template id="one">
+        <div>
+            {{ip}}
+        </div>
+    </template>
+    <div id="app">
+        <login :ip="age"></login>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                age:18,
+            },
+            components: {
+                'login': {
+                    template: '#one',
+                    props:['ip']
+                }
+            },
+
+        })
+    </script>
+</body>
+
+
+</html>
