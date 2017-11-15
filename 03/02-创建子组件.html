@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>注册子组件</title>
+    <script src="../lib/vue221.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <module>
+        </module>
+    </div>
+    <script>
+        Vue.component('module', {
+            template: '<div><h1>父级组件</h1> <child></child></div>',
+            components: {
+                'child': {
+                    template: '<div><p>我是子组件</p></div>'
+                }
+            },
+            data: function () {
+                return {
+                    msg: '组件',
+                }
+            }
+        })
+        new Vue({
+            el: '#app',
+            data: {},
+            methods: {},
+        })
+    </script>
+</body>
+
+</html>
