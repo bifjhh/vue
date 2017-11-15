@@ -10,7 +10,7 @@
 </head>
 
 
-<body>
+<!-- <body>
     <div id="app">
         <a href="#" @click="urlName='register'">登录</a>
         <a href="#" @click="urlName='register'">注册</a>
@@ -33,26 +33,28 @@
         })
     </script>
 </body>
-<!-- <body>
+ -->
+ <body>
+     
     <div id="app">
-        <a href="#" @click="urlName='login'">登录</a>    
-        <a href="#" @click="urlName='register'">注册</a>  
-        <component :is="urlName"></component>  
+        <a href="#" @click="urlName='login'">登录</a>
+        <a href="#" @click="urlName='register'">注册</a>
+        <component :is="urlName"></component>
     </div>
     <script>
         Vue.component('login',{
-            template:'<div><h1>我是登录</h1></div>'
+            template:'<h1>我是登录</h1>'
         })
-        Vue.component('register',{
-            template:'<div><h1>我是注册</h1></div>'
-        })
+         Vue.component('register', {
+                template: '<h1>我是注册</h1>'
+            })
         new Vue({
             el:'#app',
             data:{
-                urlName:'login'
+                urlName:'',
             }
         })
     </script>
-</body> -->
-
+ </body>
+ 
 </html>
