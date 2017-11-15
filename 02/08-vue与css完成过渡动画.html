@@ -7,41 +7,46 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>vue和css完成过渡动画</title>
     <script src="../lib/vue221.js"></script>
+   
     <style>
-       span{
-           display: block;
-       }
-    .abc-enter-active,.abc-leave-active{
-        transition: all 1s ease;
-    }
-    .abc-enter,.abc-leave-to{
-        margin-left: 100px;
-    }
-    .abc-enter-to,.abc-leave{
-        margin-left: 0px;
-    }
 
+        .trans-enter-active,
+        .trans-leave-active {
+            transition: all 1s ease;
+            
+        }
+
+        .trans-enter,
+        .trans-leave-to {
+            margin-left: 100px;
+            opacity: 0;
+        }
+        .trans-enter-to,.trans-leave{
+            margin-left: 0px;
+            opacity: 1;
+        }
     </style>
 </head>
 
+
 <body>
     <div id="app">
-    <button @click="toggle" type="button">点击演示</button><br>
-    <transition name="abc">
-        <span v-show="isshow">{{msg}}</span>
-    </transition>
+        <button type="button" @click="change">点击切换</button>
+        <transition name="trans">
+            <div v-show="isshow">
+                {{msg}}
+            </div>
+        </transition>
     </div>
     <script>
         new Vue({
             el: '#app',
             data: {
+                msg: 'hello world',
                 isshow: false,
-                msg: 'eeeeee'
             },
             methods: {
-                toggle: function () {
-                    console.log(this.msg);
-                    console.log(this.isshow);
+                change: function () {
                     this.isshow = !this.isshow;
                 }
             }
