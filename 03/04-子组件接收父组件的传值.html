@@ -9,13 +9,13 @@
     <script src="../lib/vue221.js"></script>
 </head>
 
-
+<!-- 
 <body>
+
     <template id="one">
-        <div>
-            {{ip}}
-        </div>
+        <div>{{ip}} </div>
     </template>
+
     <div id="app">
         <login :ip="age"></login>
     </div>
@@ -36,6 +36,30 @@
         })
     </script>
 </body>
+ -->
 
+<body>
+    <template id="module">
+        <div>{{getage}}</div>
+    </template>
+
+    <div id="app">
+        <child :getage="age"></child>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                age: 18,
+            },
+            components: {
+                'child': {
+                    template: '#module',
+                    props:['getage']
+                }
+            },
+        })
+    </script>
+</body>
 
 </html>
