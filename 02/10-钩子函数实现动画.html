@@ -9,7 +9,6 @@
     <script src="../lib/vue221.js"></script>
     <style>
         div:last-of-type {
-
             transition: all 1s ease;
             width: 100px;
         }
@@ -18,36 +17,34 @@
 
 <body>
     <div id="app">
-        <button @click="toggle">点击切换</button>
+        <button type="button" @click="change">点击切换</button>
         <transition @before-enter="beforeEnter" @enter="Enter" @after-enter="afterEnter">
-            <div v-show="isshow">
-                {{msg}}
-            </div>
+            <div v-show="isshow">{{msg}}</div>
         </transition>
-
     </div>
     <script>
         new Vue({
             el: '#app',
             data: {
+                msg: '钩子函数实现动画',
                 isshow: false,
-                msg: 'hello-vue'
             },
             methods: {
-                toggle: function () {
+                change: function () {
                     this.isshow = !this.isshow;
                 },
                 beforeEnter: function (el) {
-                    el.style.transform = "translate(100px,0)";
+                    el.style.transform = "translate(100px,0)"
+
                 },
                 Enter: function (el, done) {
                     el.offsetWidth;
-                    el.style.transform = "translate(10px,0)";
+                    el.style.transform = "translate(10px,0)"
                     done();
                 },
                 afterEnter: function (el) {
                     this.isshow = !this.isshow;
-                },
+                }
             }
         })
     </script>
