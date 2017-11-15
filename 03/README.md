@@ -1,110 +1,127 @@
-#### 过滤器
+# 组件
+#### 什么是组件
+- 组件（Component）是 Vue.js 最强大的功能之一。组件可以扩展 HTML 元素，封装可重用的代码。在较高层面上，组件是自定义元素，Vue.js 的编译器为它添加特殊功能。在有些情况下，组件也可以是原生 HTML 元素的形式，以 is 特性扩展
 
-- 系统过滤器的使用
- + 系统过滤器只存在于vue-1版本中
- + 使用方法按照说明
-
-##### 自定义私有过滤器 
-filters:{}
+#### 使用
+        1.0版本
+- 定义组件
+    + 可以用 Vue.extend() 创建一个组件构造器：
 ```javascript
-new Vue({
-            el: '#app',
-            data: {
-                time: new Date(),
-            },
-            filters: {
-                datefmt: function (input) {
-                    // input 是自定义过滤器的默认参数，input的值永远都是取自于 | 左边的内容
-                    // 过滤器的逻辑 将input的值格式化yyyy-mm-dd 字符串格式输出
-                }
-            }
-            // 在某一个vue对象内部定义的过滤器称之为私有过滤器
-            // 这种过滤器只有在当前vue对象el指定的监管的区域有用
-        })
+   var MyComponent = Vue.extend({
+  // 选项...
+})
 ```
-##### 全局过滤器 
+- 注册组件   
+    + 要把这个构造器用作组件，需要用 Vue.component(tag, constructor) 注册  
 ```javascript
-Vue.filter('datefmt',function(c1,c2,c3){
-    // 可以传入参数设置，但是顺序要保持一致
+// 全局注册组件，tag 为 my-component
+Vue.component('my-component', MyComponent)
+```
+    2.0版本
+- 注册一个全局组件
+    + 可以使用 Vue.component(tagName, options)    
+```javascript   
+Vue.component('my-component', {
+  // 选项
+})
+```
+###### 快捷方式
+```javascript
+Vue.component('名称',{
+    // 选项
 
 })
 ```
-#### v-on 按键修饰符
-- 1.0版本中如果不是系统默认的则需要自己添加
-- 2.0版本中直接使用键值码
+        *注意*
+- 在2.0版本中创建组件时，需要使用一个根元素进行包裹
 
-#### 自定义指令
+##### 局部注册---子组件
+- 不需要全局注册每个组件。可以让组件只能用在其它组件内，用实例选项 components 注册：
+- 就是在组件的内部再次注册组件
+- 使用时也必须在父级组件的内部使用
 
-```javascript
-Vue.directive('指令名',function(){
-    // 在定义指令的时候不用添加v-前缀，但是在使用的时候必须添加v-
-    // this.el 是指使用当前指令的元素
-    // this.vm 当前元素所在的区间
-    // this.expression 是指自定义指令设置的属性值，相当于变量
-})
-``` 
-#### 使用vue-resource
-- $http发送get请求
-- $http发送post请求
-- $http发送jsonp请求
-
-#### 生命周期
-- 所有的生命周期钩子自动绑定 this 上下文到实例中
-- 1.0 
-    + init
-    + created
-    + beforeCompile
-    + compiled
-    + ready
-    + attached
-- 2.0
-    + beforeCreate
-    + created
-    + beforeMount
-    + mounted
-
-#### 结合css实现过渡动画
-        在进入/离开的过渡中，会有 6 个 class 切换。
-- v-enter：
-    +定义进入过渡的开始状态。在元素被插入时生效，在下一个帧移除。
-- v-enter-active：
-    +定义过渡的状态。在元素整个过渡过程中作用，在元素被插入时生效，在 transition/animation 完成之后移除。这个类可以被用来定义过渡的过程时间，延迟和曲线函数。
-- v-enter-to: 
-    +2.1.8版及以上 定义进入过渡的结束状态。在元素被插入一帧后生效 (于此同时 v-enter 被删除)，在 transition/animation 完成之后移除。
-- v-leave: 
-    +定义离开过渡的开始状态。在离开过渡被触发时生效，在下一个帧移除。
-- v-leave-active：
-    +定义过渡的状态。在元素整个过渡过程中作用，在离开过渡被触发后立即生效，在 transition/animation 完成之后移除。这个类可以被用来定义过渡的过程时间，延迟和曲线函数。
-- v-leave-to: 
-    +2.1.8版及以上 定义离开过渡的结束状态。在离开过渡被触发一帧后生效 (于此同时 v-leave 被删除)，在 transition/animation 完成之后移除。
-#### 结合animate实现过渡动画
+#### 动态切换组件
 ```html
-<link href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1" rel="stylesheet" type="text/css">
-<div id="example-3">
-  <button @click="show = !show">
-    Toggle render
-  </button>
-  <transition
-    name="custom-classes-transition"
-    enter-active-class="animated tada"
-    leave-active-class="animated bounceOutRight"
-  >
-    <p v-if="show">hello-vue</p>
-  </transition>
+<!-- 使用component标签的 :is 绑定一个值 该 值为一个变量，用以切换显示组件 -->
+<component :is="urlName"></component>
+<!-- is内的值为哪一个组件的名称，显示的就是哪一个组件 -->
+```
+
+#### prop
+- 使用 Props 传递数据给子组件
+- 组件实例的作用域是孤立的。这意味着不能并且不应该在子组件的模板内直接引用父组件的数据。可以使用 props 把数据传给子组件。
+    + 子组件接收数据需要显式地用 props 选项 声明 props：
+    + prop 默认是单向绑定：当父组件的属性变化时，将传导给子组件，但是反过来不会
+
+```html
+<body>
+    <template id="one">
+        <div>{{ip}}</div>
+    </template>
+    <div id="app">
+        <login :ip="age"></login>
+        <!-- 设置ip 绑定age -->
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {age:18,},
+            components: {
+                'login': {template: '#one',props:['ip']}
+                },// props 接收的名称 要与 组件内绑定的名称相同
+        })
+    </script>
+</body>
+```
+![001_父组件往子组件传值](../images/001_父组件往子组件传值.png)
+
+#### 子组件向父组件传值
+- 在子组件内声明并绑定一个方法
+- 该方法调用时创建自定义事件this.$emit();
+- 子组件通过自定义事件，将值通过事件方法传送到父组件内部用于接收的方法内，完成值的传递
+
+![002_子组件往父组件传值](../images/002_子组件往父组件传值.png)
+
+#### 子组件引用
+        2.0版本
+- 尽管有 prop 和事件，但是有时仍然需要在 JavaScript 中直接访问子组件。为此可以使用 ref 为子组件指定一个引用 ID。例如：
+```html
+<div id="parent">
+  <user-profile ref="profile"></user-profile>
 </div>
 ```
-#### 钩子函数实现动画
-- 可以在属性中声明钩子
-```html 
-<transition
-  v-on:before-enter="beforeEnter"
-  v-on:enter="enter"
-  v-on:after-enter="afterEnter"
-  v-on:enter-cancelled="enterCancelled"
-  v-on:before-leave="beforeLeave"
-  v-on:leave="leave"
-  v-on:after-leave="afterLeave"
-  v-on:leave-cancelled="leaveCancelled"
->
-</transition>
+```javascript
+var parent = new Vue({ el: '#parent' })
+// 访问子组件实例
+var child = parent.$refs.profile
+```
+- 当 ref 和 v-for 一起使用时，获取到的引用会是一个数组，包含和循环数据源对应的子组件。
+- $refs 只在组件渲染完成后才填充，并且它是非响应式的。它仅仅是一个直接操作子组件的应急方案——应当避免在模板或计算属性中使用 $refs
+
+## 路由 vue-router
+- 首先引入vue.js文件，然后再引入vue-router.js文件
+
+- 定义vueRouter对象并且定义好路由规则清单
+
+```javascript
+var router = new VueRouter({
+	routes:[
+		{  
+        path:'/login',  //路由规则的路径
+		component:login
+         },
+		{
+		path:'/register',  //路由规则的路径
+		component:register
+		}
+	]
+});
+
+```
+- 在vue对象中绑定router对象
+```javascript
+ new Vue({
+  	el:'#app',
+  	router:router
+  });
 ```
