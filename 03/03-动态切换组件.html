@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>动态切换组件</title>
+    <script src="../lib/vue221.js"></script>
+</head>
+
+
+<body>
+    <div id="app">
+        <a href="#" @click="urlName='register'">登录</a>
+        <a href="#" @click="urlName='register'">注册</a>
+        <component :is="urlName"></component>
+    </div>
+
+    <script>
+        Vue.component('login', {
+            template: '<div><h3>我是登录</h3></div>'
+        })
+        Vue.component('register', {
+            template: '<div><h3>我是注册</h3></div>'
+        })
+
+        new Vue({
+            el: '#app',
+            data: {
+                urlName:'login'
+            }
+        })
+    </script>
+</body>
+<!-- <body>
+    <div id="app">
+        <a href="#" @click="urlName='login'">登录</a>    
+        <a href="#" @click="urlName='register'">注册</a>  
+        <component :is="urlName"></component>  
+    </div>
+    <script>
+        Vue.component('login',{
+            template:'<div><h1>我是登录</h1></div>'
+        })
+        Vue.component('register',{
+            template:'<div><h1>我是注册</h1></div>'
+        })
+        new Vue({
+            el:'#app',
+            data:{
+                urlName:'login'
+            }
+        })
+    </script>
+</body> -->
+
+</html>
