@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>钩子函数实现动画</title>
+    <script src="../lib/vue221.js"></script>
+    <style>
+        div:last-of-type {
+
+            transition: all 1s ease;
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="toggle">点击切换</button>
+        <transition @before-enter="beforeEnter" @enter="Enter" @after-enter="afterEnter">
+            <div v-show="isshow">
+                {{msg}}
+            </div>
+        </transition>
+
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                isshow: false,
+                msg: 'hello-vue'
+            },
+            methods: {
+                toggle: function () {
+                    this.isshow = !this.isshow;
+                },
+                beforeEnter: function (el) {
+                    el.style.transform = "translate(100px,0)";
+                },
+                Enter: function (el, done) {
+                    el.offsetWidth;
+                    el.style.transform = "translate(10px,0)";
+                    done();
+                },
+                afterEnter: function (el) {
+                    this.isshow = !this.isshow;
+                },
+            }
+        })
+    </script>
+</body>
+
+</html>
