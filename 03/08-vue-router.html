@@ -11,38 +11,36 @@
 </head>
 
 <body>
+
     <div id="app">
-        <router-link to="/login">登录</router-link>
-        <router-link to="/register">注册</router-link>
+        <router-link to="login">登录</router-link>
+        <router-link to="register">注册</router-link>
         <router-view></router-view>
     </div>
-
     <script>
-        var account = Vue.extend({});
-
+        var app = Vue.extend({});
         var login = Vue.extend({
-            template: '<h3>登录</h3>'
+            template: '<h1>我是登录</h1>'
         });
         var register = Vue.extend({
-            template: '<h3>注册</h3>'
+            template: '<h1>我是注册</h1>'
         });
+
         var router = new VueRouter({
             routes: [{
-                    path: '/login',
-                    component: login
-                },
-                {
-                    path: '/register',
-                    component: register
-                }
-            ]
+                path: '/login',
+                component: login
+            }, {
+                path: '/register',
+                component: register
+            }]
         })
         var vm = new Vue({
             el: '#app',
             data: {
 
             },
-            router: router
+            router: router,
         })
     </script>
 </body>
