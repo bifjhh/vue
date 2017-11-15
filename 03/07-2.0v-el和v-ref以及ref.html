@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>07 2.0v-el和v-ref以及ref</title>
+    <!-- <script src="../lib/vue1026.js"></script> -->
+    <script src="../lib/vue221.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="getdom">获取dom对象</button>
+        <div ref="mydiv" id="div1">dom</div>
+        <button @click="getcom">获取组件对象</button>
+        <login ref="mycom"></login>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            methods: {
+                getdom: function () {
+                    console.log(document.getElementById('div1').innerHTML);
+                    console.log(this.$refs.mydiv.innerHTML);
+                },
+                getcom: function () {
+                    console.log(this.$refs.mycom.subname);
+                }
+            },
+            components: {
+                'login': {
+                    data: function () {
+                        return {
+                            subname: '子组件名称'
+                        }
+                    },
+                    template: '<h1>这是一个子组件</h1>'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
