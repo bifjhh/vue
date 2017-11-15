@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组件的创建</title>
+    <script src="../lib/vue221.js"></script>
+    <!-- <script src="../lib/vue1026.js"></script> -->
+</head>
+
+<body>
+
+        <template id="account">
+           <div>
+                 {{msg}}
+                <a href="#" @click="login">登录</a> |
+                <a href="#">注册</a>
+           </div>
+        </template>
+        <div id="app">
+            <lo></lo>
+        </div>
+        <script>
+            Vue.component('lo', {
+                template: '#account',
+                data: function () {
+                    return {
+                        msg: '账户组件页面'
+                    }
+                },
+                methods: {
+                    login: function () {
+                        alert('login')
+                    }
+                }
+            })
+
+            new Vue({
+                el: '#app',
+                data: {},
+                methods: {},
+            })
+        </script>
+    </body>
+
+</html>
