@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue和css完成过渡动画</title>
+    <script src="../lib/vue221.js"></script>
+    <style>
+       span{
+           display: block;
+       }
+    .abc-enter-active,.abc-leave-active{
+        transition: all 1s ease;
+    }
+    .abc-enter,.abc-leave-to{
+        margin-left: 100px;
+    }
+    .abc-enter-to,.abc-leave{
+        margin-left: 0px;
+    }
+
+    </style>
+</head>
+
+<body>
+    <div id="app">
+    <button @click="toggle" type="button">点击演示</button><br>
+    <transition name="abc">
+        <span v-show="isshow">{{msg}}</span>
+    </transition>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                isshow: false,
+                msg: 'eeeeee'
+            },
+            methods: {
+                toggle: function () {
+                    console.log(this.msg);
+                    console.log(this.isshow);
+                    this.isshow = !this.isshow;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
