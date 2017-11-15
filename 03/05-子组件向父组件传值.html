@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>子组件接收父组件的传值</title>
+    <script src="../lib/vue221.js"></script>
+</head>
+
+<!-- 
+<body>
+    <template id="one">
+        <button @click="senddata">
+         发送给父组件
+        </button>
+    </template>
+    <div id="app">
+        <login @send="getdata"></login>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {},
+            methods:{
+                getdata:function(v){
+                    alert(v);
+                }
+            },
+            components: {
+                'login': {
+                    template: '#one',
+                    methods: {
+                        senddata: function () {
+                            // $emit 自定义事件发射器 ，第一个参数为时间名称，第二个参数为要发送的值
+                            this.$emit('send', '18')
+                        }
+                    }
+                }
+            },
+
+        })
+    </script>
+</body>
+ -->
+<body>
+    <template id="temp">
+        <button @click="senddata">发送数据</button>
+    </template>
+    <div id="app">
+        <setdata @send="getdata"></setdata>
+    </div>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{},
+            methods:{
+                getdata:function(v){
+                    alert(v);
+                }
+            },
+            components:{'setdata':{
+                template:'#temp',
+                methods:{
+                    senddata:function(){
+                        this.$emit('send','18')
+                    }
+                }
+            }},
+        })
+    </script>
+</body>
+</html>
