@@ -10,30 +10,23 @@
 </head>
 
 <body>
+    
     <div id="app">
-        <module>
-        </module>
+        <module></module>
     </div>
     <script>
-        Vue.component('module', {
-            template: '<div><h1>父级组件</h1> <child></child></div>',
-            components: {
-                'child': {
-                    template: '<div><p>我是子组件</p></div>'
-                }
-            },
-            data: function () {
-                return {
-                    msg: '组件',
+        Vue.component('module',{
+            template:'<div><p>父组件</p><child></child></div>',
+            components:{
+                'child':{
+                    template:'<p>子组件</p>'
                 }
             }
         })
         new Vue({
-            el: '#app',
-            data: {},
-            methods: {},
+            el:'#app',
+
         })
     </script>
 </body>
-
 </html>
