@@ -8,40 +8,39 @@
     <title>结合animate实现过渡</title>
     <script src="../lib/vue221.js"></script>
     <link rel="stylesheet" href="../animate.css">
-<style>
-div:last-of-type{
-    font-size: 30px;
-    font-weight: 600;
-    color: #0ff;
-    line-height: 60px;
-}
-</style>
+    <style>
+        div:last-of-type {
+            font-size: 30px;
+            font-weight: 600;
+            color: #0ff;
+            line-height: 60px;
+        }
+    </style>
 </head>
 
-<body>
-    <div id="app">
-    <button @click="toggle" type="button">点击演示</button><br>
-    <transition name="abc" 
-    enter-active-class="animated flash"
-     leave-active-class="animated shake">
+ <body>
+     <div id="app">
+         <button type="button" @click="change">点击切换</button>
+        <transition name="trans"
+        enter-active-class="animated flash" 
+        leave-active-class="animated shake"
+        >
         <div v-show="isshow">{{msg}}</div>
-    </transition>
-    </div>
-    <script>
-        new Vue({
-            el: '#app',
-            data: {
-                isshow: false,
-                msg: 'eeeeee'
-            },
-            methods: {
-                toggle: function () {
-                  
-                    this.isshow = !this.isshow;
+        </transition>
+     </div>
+     <script>
+         new Vue({
+             el:'#app',
+             data:{
+                 msg:'animate',
+                isshow:false,
+             },
+             methods:{
+                change:function(){
+                    this.isshow=!this.isshow;
                 }
-            }
-        })
-    </script>
-</body>
-
+             }
+         })
+     </script>
+ </body>
 </html>
