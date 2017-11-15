@@ -7,42 +7,42 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>组件的创建</title>
     <script src="../lib/vue221.js"></script>
-    <!-- <script src="../lib/vue1026.js"></script> -->
 </head>
 
 <body>
-
-        <template id="account">
-           <div>
-                 {{msg}}
-                <a href="#" @click="login">登录</a> |
-                <a href="#">注册</a>
-           </div>
-        </template>
-        <div id="app">
-            <lo></lo>
-        </div>
-        <script>
-            Vue.component('lo', {
-                template: '#account',
-                data: function () {
-                    return {
-                        msg: '账户组件页面'
-                    }
-                },
-                methods: {
-                    login: function () {
-                        alert('login')
-                    }
+    <template id="acc">
+       <div>
+             {{msg}}<br>
+             <br>
+            <a href="#" @click="login">登录</a>
+            <a href="#" @click="register">注册</a>
+       </div>
+    </template>
+    <div id="app">
+        <login></login>
+    </div>
+    <script>
+        Vue.component('login', {
+            template: '#acc',
+            data: function () {
+                return {
+                    msg: '注册组件'
                 }
-            })
+            },
+            methods:{
+                login:function(){
+                    alert('我是登录');
+                },
+                register:function(){
+                    alert('我是注册');
+                }
+            }
+        })
+        new Vue({
+            el: '#app',
 
-            new Vue({
-                el: '#app',
-                data: {},
-                methods: {},
-            })
-        </script>
-    </body>
+        })
+    </script>
+</body>
 
 </html>
