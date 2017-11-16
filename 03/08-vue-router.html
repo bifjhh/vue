@@ -10,8 +10,8 @@
     <script src="../lib/vue-router231.js"></script>
 </head>
 
-<body>
-
+ <body>
+     
     <div id="app">
         <router-link to="login">登录</router-link>
         <router-link to="register">注册</router-link>
@@ -19,30 +19,18 @@
     </div>
     <script>
         var app = Vue.extend({});
-        var login = Vue.extend({
-            template: '<h1>我是登录</h1>'
-        });
-        var register = Vue.extend({
-            template: '<h1>我是注册</h1>'
-        });
-
+        var login = Vue.extend({template:'<div><p>我是登录</p></div>'});
+        var register = Vue.extend({template:'<div><p>我是注册</p></div>'});
         var router = new VueRouter({
-            routes: [{
-                path: '/login',
-                component: login
-            }, {
-                path: '/register',
-                component: register
-            }]
+            routes:[
+                {path:'/login',component:login},
+                {path:'/register',component:register},
+            ]
         })
-        var vm = new Vue({
-            el: '#app',
-            data: {
-
-            },
-            router: router,
+        new Vue({
+            el:'#app',
+            router:router,
         })
     </script>
-</body>
-
+ </body>
 </html>
