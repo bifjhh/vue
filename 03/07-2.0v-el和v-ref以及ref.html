@@ -9,38 +9,23 @@
     <!-- <script src="../lib/vue1026.js"></script> -->
     <script src="../lib/vue221.js"></script>
 </head>
-
-<body>
+ <body>
+     
     <div id="app">
-        <button @click="getdom">获取dom对象</button>
-        <div ref="mydiv" id="div1">dom</div>
-        <button @click="getcom">获取组件对象</button>
-        <login ref="mycom"></login>
+        <button @click="getDom" type="button">获取DOM</button>
+        <p ref="getdom">我是domdom</p>
+        <button @click="getCom" type="button">获取COM</button>
+        <module ref="getcom"></module>
     </div>
     <script>
         new Vue({
-            el: '#app',
-            methods: {
-                getdom: function () {
-                    console.log(document.getElementById('div1').innerHTML);
-                    console.log(this.$refs.mydiv.innerHTML);
-                },
-                getcom: function () {
-                    console.log(this.$refs.mycom.subname);
-                }
+            el:'#app',
+            methods:{
+                getDom:function(){console.log(this.$refs.getdom.innerHTML)},
+                getCom:function(){console.log(this.$refs.getcom.msg)},
             },
-            components: {
-                'login': {
-                    data: function () {
-                        return {
-                            subname: '子组件名称'
-                        }
-                    },
-                    template: '<h1>这是一个子组件</h1>'
-                }
-            }
+            components:{'module':{template:'<div><p>我是子组件</P></div>',data:function(){return{msg:'我是子组件的数据'}}}}
         })
     </script>
-</body>
-
+ </body>
 </html>
