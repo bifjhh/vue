@@ -7,33 +7,38 @@
     <title>06-v-el和v-ref以及ref</title>
     <script src="../lib/vue1026.js"></script>
 </head>
+
 <body>
+    
     <div id="app">
-        <button @click="getdom">获取dom对象</button>
-        <div v-el:mydiv id="div1">dom</div>
-        <button @click="getcom">获取组件对象</button>
-        <login v-ref:mycom></login>
+        <button type="button" @click="getDom">获取dom</button>
+        <div v-el:dom>我是DOM元素</div>
+        <button type="button" @click="getCom">获取com</button>
+        <ref v-ref:com></ref>
     </div>
     <script>
         new Vue({
             el:'#app',
+            data:{
+
+            },
             methods:{
-                getdom:function(){
-                    console.log(document.getElementById('div1').innerHTML);
-                    console.log(this.$els.mydiv.innerHTML);
+                getDom:function(){
+                    console.log(this.$els.dom.innerHTML)
                 },
-                getcom:function(){
-                    console.log(this.$refs.mycom.subname);
+                getCom:function(){
+                    console.log(this.$refs.com.senddata)
                 }
             },
-            components:{'login':{
+            components:{'ref':{
+                template:'<div><p>我是组件</p></div>',
                 data:function(){
                     return{
-                        subname:'子组件名称'
+                        senddata:'我是子组件内部的数据'
                     }
-                },
-                template:'<h1>这是一个子组件</h1>'
+                }
             }}
+
         })
     </script>
 </body>
