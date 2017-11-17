@@ -70,3 +70,46 @@ module.exports={
     +   目录随意，但是路径要写对
 - 在入口文件中导入 css文件    
 - 然后打包
+
+### 打包scss文件
+- 下载依赖包
+        cnpm install node-sass sass-loader css-loader style-loader --save-dev
+- 在webpack.config.js 中添加配置scss依赖的loader
+- 代码↓
+```javascript
+{//增加scss配置
+    test: /\.scss$/, //打包 .scss文件
+    loader: 'style-loader!css-loader!sass-loader'
+}
+            
+```
+- 建立scss文件 并在入口文件中导入
+- 打包
+
+### 打包Less文件
+
+- 下载依赖包
+        cnpm install node-sass sass-loader css-loader style-loader less less-loader --save-dev
+- 在webpack.config.js 中添加配置less依赖的loader
+- 代码↓
+```javascript
+ {//增加less配置
+    test: /\.less/, //打包 .less文件
+    loader: 'style-loader!css-loader!less-loader'
+}
+```
+- 建立scss文件 并在入口文件中导入
+- 打包
+
+### 打包scss文件
+- 下载依赖包
+        cnpm install node-sass sass-loader css-loader style-loader url-loader file-loader --save-dev
+- 在webpack.config.js 中配置这两个loader
+- 代码↓
+```javascript
+{
+    test:/\.(png|jpg|gif|ttf|svg)$/,//打包url请求的资源文件
+    loader:'url-loader?limit=20000' //limit表示图片的大小为20K是临界值，小于20K的图片均被打包到build.js中去，请求图片就会很快
+}          
+```
+- 在css文件导入一个图片 
