@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>watch的使用</title>
+    <script src="../lib/vue221.js"></script>
+</head>
+<body>
+    <div id="app">
+<input type="text" v-model="firstName">
+<input type="text" v-model="lastName">
+<p>{{fullName}}</p>
+    </div>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                firstName:'我是第一个',
+                lastName:'我是第二个',
+                fullName:""
+            },
+            watch:{
+                "firstName":function(newV,oldV){
+                    this.fullName=this.firstName+this.lastName
+                },
+                "lastName": function (newV, oldV) {
+                    this.fullName = this.firstName + this.lastName
+                }
+            }
+
+        })
+    </script>
+</body>
+</html>
