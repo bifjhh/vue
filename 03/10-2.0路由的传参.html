@@ -19,7 +19,7 @@
     <script>
         var app = Vue.extend({});
         var login = Vue.extend({
-            template: '<div>登录组件{{val}}</div>',
+            template: '<div>登录{{val}}</div>',
             data: function () {
                 return {
                     val: ''
@@ -27,27 +27,27 @@
             },
             created: function () {
                 this.val = this.$route.params.name;
+                //获取 当前 路由 下的参数 的名称
             }
         });
         var register = Vue.extend({
-            template: '<div>注册组件{{this.$route.params.name}}</div>'
+            template: '<div>注册{{this.$route.params.name}}</div>'
         });
         var router = new VueRouter({
-            routes: [
-                {
-                    path: '/login/:name',
+            routes: [{
+                    path: '/login/:name', //: 后面的为参数
                     component: login
                 },
                 {
                     path: '/register/:name',
-                    component: register
-                },
+                    component: login
+                }
             ]
-        })
+        });
+
         new Vue({
             el: '#app',
-            data: {},
-            router: router,
+            router: router
         })
     </script>
 </body>
