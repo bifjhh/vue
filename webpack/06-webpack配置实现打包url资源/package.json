@@ -1,0 +1,14 @@
+{
+  "name": "",
+  "version": "",
+  "dependencies": {
+    "css-loader": "^0.28.7",
+    "file-loader": "^1.1.5",
+    "less": "^2.7.3",
+    "less-loader": "^4.0.5",
+    "node-sass": "^4.6.1",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.19.0",
+    "url-loader": "^0.6.2"
+  }
+}
