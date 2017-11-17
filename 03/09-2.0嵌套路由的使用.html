@@ -10,43 +10,46 @@
     <script src="../lib/vue-router231.js"></script>
 </head>
 
-<body>
+
+ <body>
+     
     <div id="app">
-<router-link to="/account/login">登录</router-link>
-<router-link to="/account/register">注册</router-link>
-<router-view></router-view>
+        <router-link to="/account/login">登录</router-link>
+        <router-link to="/account/register">注册</router-link>
+        <router-view></router-view> 
     </div>
     <script>
         var app = Vue.extend({
-            template: '<div>账号管理<router-view></router-view></div>'
-        });
+            template:'<div>账号管理<router-view></router-view></div>'
+        })
         var login = Vue.extend({
-            template: '<div>登录组件</div>'
-        });
+            template:'<div>登陆</div>'
+        })
         var register = Vue.extend({
-            template: '<div>注册组件</div>'
-        });
-        var router = new VueRouter({
-            routers: [{
-                path: '/account',
-                component: app,
-                children: [{
-                        path: 'login',
-                        component: login
-                    },
-                    {
-                        path: 'register',
-                        component: register
-                    },
-                ]
-            }]
+            template:'<div>注册</div>'
+        })
+        var router=new VueRouter({
+            routes:[
+                {
+                    path:'/account',
+                    component:app,
+                    children:[//被嵌套的路由，
+                        {//配置路由规则
+                            path:'login',
+                            component:login
+                        },
+                        {//配置路由规则
+                            path:'register',
+                            component:register
+                        }
+                    ]
+                }
+            ]
         })
         new Vue({
-            el: '#app',
-            data: {},
-            router: router,
+            el:'#app',
+            router:router
         })
     </script>
-</body>
-
+ </body>
 </html>
