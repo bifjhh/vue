@@ -16,7 +16,8 @@
         <router-link to="/register/ivan">注册</router-link>
         <router-view></router-view>
     </div>
-    <script>
+
+      <script>
         var app = Vue.extend({});
         var login = Vue.extend({
             template: '<div>登录{{val}}</div>',
@@ -40,7 +41,7 @@
                 },
                 {
                     path: '/register/:name',
-                    component: login
+                    component: register
                 }
             ]
         });
@@ -50,6 +51,8 @@
             router: router
         })
     </script>
+
+  
 </body>
 
 </html>
