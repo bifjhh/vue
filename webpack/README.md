@@ -98,7 +98,7 @@ module.exports={
     loader: 'style-loader!css-loader!less-loader'
 }
 ```
-- 建立scss文件 并在入口文件中导入
+- 建立less文件 并在入口文件中导入
 - 打包
 
 ### 打包scss文件
@@ -112,4 +112,5 @@ module.exports={
     loader:'url-loader?limit=20000' //limit表示图片的大小为20K是临界值，小于20K的图片均被打包到build.js中去，请求图片就会很快
 }          
 ```
-- 在css文件导入一个图片 
+- 在css文件导入一个图片设置 
+- 打包
