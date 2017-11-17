@@ -40,7 +40,7 @@
 ### 打包css文件
 - 初始化npm
 - 安装打包css文件的依赖包
-        style-loader css-loader --save-dev
+        cnpm install style-loader css-loader --save-dev
  - 在webpack.config.js 中添加配置 module 选项
  ```javascript
  // 导出一个对象
@@ -73,7 +73,7 @@ module.exports={
 
 ### 打包scss文件
 - 下载依赖包
-        cnpm install node-sass sass-loader css-loader style-loader --save-dev
+        cnpm install style-loader css-loader node-sass sass-loader  --save-dev
 - 在webpack.config.js 中添加配置scss依赖的loader
 - 代码↓
 ```javascript
@@ -89,7 +89,7 @@ module.exports={
 ### 打包Less文件
 
 - 下载依赖包
-        cnpm install node-sass sass-loader css-loader style-loader less less-loader --save-dev
+        cnpm install style-loader css-loader node-sass sass-loader less less-loader  --save-dev
 - 在webpack.config.js 中添加配置less依赖的loader
 - 代码↓
 ```javascript
@@ -101,9 +101,9 @@ module.exports={
 - 建立less文件 并在入口文件中导入
 - 打包
 
-### 打包scss文件
+### 打包url资源
 - 下载依赖包
-        cnpm install node-sass sass-loader css-loader style-loader url-loader file-loader --save-dev
+        cnpm install style-loader css-loader node-sass sass-loader less less-loader url-loader file-loader --save-dev
 - 在webpack.config.js 中配置这两个loader
 - 代码↓
 ```javascript
@@ -114,3 +114,5 @@ module.exports={
 ```
 - 在css文件导入一个图片设置 
 - 打包
+
+### webpack-dev-serve实现热刷新热加载
