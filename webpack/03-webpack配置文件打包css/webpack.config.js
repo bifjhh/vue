@@ -7,9 +7,10 @@ module.exports={
     },
     module:{//打包css需要添加配置 moudle 选项
         loaders:[
-            {
+            {   //匹配所有的css文件
                 test: /\.css$/,
                 loader: 'style-loader!css-loader'
+                //顺序不能错 
             }
         ]
     }
