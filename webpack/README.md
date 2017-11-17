@@ -116,3 +116,43 @@ module.exports={
 - 打包
 
 ### webpack-dev-serve实现热刷新热加载
+- 需要安装的node包有：
+    + webpack-dev-server ： 
+        + webpack开发服务器
+    + html-webpack-plugin ：
+        + 结合webpack在内存中自动生成index.html的入口文件
+- 在项目根目录下打开cmd命令面板，输入：
+        cnpm install webpack@1.14.0 webpack-dev-server@1.16.0 html-webpack-plugin  --save-dev 回车即可完成安装        
+- 在package.json文件中配置webpack-dev-server命令
+```javascript
+    "scripts": {
+            "dev":"webpack-dev-server --inline --hot --open --port 4009"
+        }
+/* 参数说明：
+    inline :自动刷新
+    hot :热加载
+    port 指定监听端口为 5200
+    open : 自动在默认浏览器中打开
+    host： 可以指定服务器的ip，不指定默认为127.0.0.1(localhost) */
+```
+- 配置html-webpack-plugin组件
+
+    + webpack-dev-server要实现浏览器自动刷新，必须要利用html-webpack-plugin在内存中生成index.html页面才能实现
+    + html-webpack-plugin 配置步骤：
+- 在webpack.config.js中加入如下代码：
+ ```javascript  
+        // 导入html-webpack-plugin 包,获取到插件对象
+        var htmlwp = require('html-webpack-plugin');
+
+        plugins:[
+        new htmlwp({
+          title: '首页',  //生成的页面标题
+          filename: 'index.html', //webpack-dev-server在内存中生成的文件名称，自动将build注入到这个页面底部，才能实现自动刷新功能
+          template: 'index1.html' //根据index1.html这个模板来生成(这个文件请程序员自己生成)
+        })
+    ]
+```
+
+- 运行
+    + 在cmd中执行npm run dev 命令开启 webpack-dev-server服务器来运行vue项目
+    + 这时候可以随便修改一个css样式，就会自动刷新看到效果
