@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>路由的传参使用</title>
+    <script src="../lib/vue221.js"></script>
+    <script src="../lib/vue-router231.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <router-link to="/acctro/login/rose">登录</router-link>
+        <router-link to="/acctro/register/ivan">注册</router-link>
+        <router-view></router-view>
+    </div>
+
+    <!-- 嵌套路由参数传递值 -->
+    <script>
+        var acctro = Vue.extend({
+            template: '<div>账号管理<router-view></router-view></div>'
+        });
+        var login = Vue.extend({
+            template: '<div>账号登录:{{this.$route.params.name}}</div>'
+        });
+        var register = Vue.extend({
+            template: '<div>账号注册:{{this.$route.params.name}}</div>'
+        });
+        var router = new VueRouter({
+            routes: [{
+                path: '/acctro',
+                component: acctro,
+                children: [{
+                        path: 'login/:name',
+                        component: login
+
+                    },
+                    {
+                        path: 'register/:name',
+                        component: register
+
+                    }
+                ]
+            }]
+        })
+
+        new Vue({
+            el: '#app',
+            router: router
+        })
+    </script>
+
+</body>
+
+</html>
