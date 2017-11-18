@@ -156,3 +156,35 @@ module.exports={
 - 运行
     + 在cmd中执行npm run dev 命令开启 webpack-dev-server服务器来运行vue项目
     + 这时候可以随便修改一个css样式，就会自动刷新看到效果
+ ### webpack3.0实现es6转es5
+ - 重新安装新的webpack和webpack-dev-server
+ - 在入口文件main.js中将es5写法更改weies6写法
+ - 代码↓
+ ```javascript
+// 导入文件 
+// require('../static/css/site.css');//es5语法
+// require('../static/css/sitel.scss');//es5语法
+// require('../static/css/site2.less');//es5语法
+// 使用es6语法导入 
+import '../static/css/site.css'; //不返回函数对象的直接在import 后面写 路径
+import addObj from './calc.js'; //返回的对象的，需要设置接受的名称，另外不能写在某一函数的内部，必须写在顶级（全局）
+    bt.onclick = function () {
+        //获取calc.js中的add方法并且调用计算结果
+        var v1value = parseFloat(v1.value);
+        var v2value = parseFloat(v2.value);
+        // 调用add方法
+        // var add = require('./calc.js'); //es5语法
+        // res.value = add(v1value, v2value);//es5语法
+        res.value = addObj.add(v1value, v2value);
+    }
+ ```
+- 更改js文件中的导出写法
+```javascript
+// 导出add方法
+// module.exports = add;//es5写法
+    export default {
+        // add：add
+        add //在es6当中 属性名称和属性值变量同名的时候可以只写一个，相当于es5中的 add：add
+    }
+```
+- 然后运行webpack进行打包
