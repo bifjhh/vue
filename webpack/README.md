@@ -125,9 +125,9 @@ module.exports={
         cnpm install webpack@1.14.0 webpack-dev-server@1.16.0 html-webpack-plugin  --save-dev 回车即可完成安装        
 - 在package.json文件中配置webpack-dev-server命令
 ```javascript
-    "scripts": {
-            "dev":"webpack-dev-server --inline --hot --open --port 4009"
-        }
+"scripts": {
+        "dev":"webpack-dev-server --inline --hot --open --port 4009"
+    }
 /* 参数说明：
     inline :自动刷新
     hot :热加载
@@ -188,3 +188,57 @@ import addObj from './calc.js'; //返回的对象的，需要设置接受的名�
     }
 ```
 - 然后运行webpack进行打包
+
+### 利用webpack解析和打包.vue组件页面
+-  Vue项目中的每个页面其实都是一个.vue的文件，这种文件，Vue称之为组件页面，必须借助于 webpack的vue-loader才能使用
+- 安装相关包：
+    + cnpm install vue-loader vue-template-compiler --save-dev
+    + cnpm intall vue --save
+- 在webpack.config.js中的loaders中增加
+ ```javascript
+{
+    // 打包.vue文件
+    test:/\.vue$/,   //表示当前要打包的文件的后缀正则表达式
+    loader:'vue-loader' //
+}    
+```  
+- .vue组件页面的写法结构
+```html   
+<!-- 整个项目的根组件 -->
+<template>
+    <!-- 页面结构 -->
+    <div class="tmpl"></div>
+    <!-- 由于是vue2.0 所以这个里面一定要放一个根元素，也可以放vue的指令 v- -->
+</template>
+
+<script> 
+// 本质上是一个vue组件
+    export default {
+    data: function() {
+        return {
+        name: "人生不过一场场的遇见."
+        };
+    }
+    };
+// 或者 
+    new Vue({
+         data:{name: "人生不过一场场的遇见."}
+        }) 
+// 就是导出一个 Vue的实例  
+</script>
+
+<style></style>  <!-- 样式是全局的 -->
+<style scoped></style> <!-- 添加scoped 代表样式仅在当前vue组件内有效 -->
+```
+- 将.vue中的内容解析编译并且展示在浏览器中
+- 在main.js中编写解析.vue的代码
+```javascript
+import Vue from 'vue'; //类似于script导入vue核心包
+import App from "./APP.vue"; //导入App.vue的vue对象
+// 利用Vue对象进行解析渲染
+new Vue({
+    el: '#app',
+    // render:function(create){create(App);}  //es5语法
+    render: c => c(App) //es6的函数写法 =>：goes to 把App.vue文件
+});
+```
