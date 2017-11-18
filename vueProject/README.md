@@ -22,4 +22,11 @@ new Vue({
 ## Vue移动组件mint-ui使用
 ### 安装mint-ui
 - 利用：cnpm install mint-ui --save 命令将mint-ui安装到项目中
-- 在main.js中全局导入mint-ui和它的css后即可在任何组件的中使用mint-ui组件了 
+- 在入口文件中全局导入mint-ui和它的css后即可在任何组件的中使用mint-ui组件了 
+## MUI
+- MUI是最接近原生APP体验的高性能前端框架，MUI不依赖任何第三方JS库，压缩后的JS和CSS文件仅有100+K和60+K
+- 主要使用它的css布局，对于js特效没有用到
+### 使用mui 组件
+- 下载使用静态资源包
+- 在入口文件中引入mui.css文件
+- 要实现某个功能只需要按照MUI在线DEMO，找到案例源码页面将效果迁移到项目中
