@@ -9,7 +9,7 @@
 - MVVM要解决的问题是将业务逻辑代码与视图代码进行完全分离，使各自的职责更加清晰，后期代码维护更加简单
 
 - 用图解的形式分析Ajax请求回来数据后直接操作Dom来达到视图的更新的缺点，以及使用MVVM模式是如何来解决这个缺点的
-- 
+- ​
 #### 使用   
       1. 导入vuejs
         <script src="vue.js"></script>
@@ -24,7 +24,7 @@
 	</div>
 </body>
    ```
-   
+
    ```javascript
          //vm :叫做MVVM中的 View Model
           var vm = new Vue({
@@ -34,3 +34,5 @@
           }
       });
    ```
+## 简单图解
+![](images/demo.png)
