@@ -5,7 +5,7 @@
     + router-link 路由导航链接
     + router-view 渲染时的占位符 
 - 在 src 目录中新建 component --> account 文件夹
-+   
+    + 在其中保存创建的组件文件
 - 在入口文件中配置  vue router：
     + 导入
     + 绑定
@@ -28,5 +28,13 @@ new Vue({
 - 主要使用它的css布局，对于js特效没有用到
 ### 使用mui 组件
 - 下载使用静态资源包
+    + hellomui源码下载（完全可以直接拷贝里面的代码来实现自己的功能）：https://github.com/dcloudio/mui
 - 在入口文件中引入mui.css文件
 - 要实现某个功能只需要按照MUI在线DEMO，找到案例源码页面将效果迁移到项目中
+
+- 查询版本 npm||yarn info 模块名称
+    + npm info webpack
+- 如果npm无法使用 可以安装 yarn
+    + cnpm install yarn -g    
+- 使用yarn查询版本
+    + yarn info webpack

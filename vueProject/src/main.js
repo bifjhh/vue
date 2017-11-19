@@ -6,9 +6,8 @@ Vue.use(VueRouter); //在vue中使用路由
 // 导入vue组件
 import login from './component/acccount/login.vue';
 import register from './component/acccount/register.vue';
-
+// 定义路由规则
 var router = new VueRouter({
-    // 定义路由规则
     routes: [{
             path: '/login',
             component: login
@@ -19,8 +18,8 @@ var router = new VueRouter({
         }
     ]
 })
+// 实例化vue对象并接管id=app 的div 元素上
 new Vue({
-    // 实例化vue对象并接管id=app 的div 元素上
     el: '#app',
     // render:function(create){create(App);}  //es5语法
     render: c => c(App), //es6的函数写法 =>：goes to 

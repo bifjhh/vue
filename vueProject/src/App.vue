@@ -10,6 +10,7 @@
           <mt-button icon="more" slot="right"></mt-button>
         </mt-header>
         {{name}}
+	<!-- 在页面改变锚点值 -->
         <router-link to="/login">登录</router-link>
         <router-link to="/register">注册</router-link>
         <router-view></router-view>
