@@ -4,14 +4,10 @@
     <div>
         <!-- 使用mint-ui的header组件完成头部 -->
         <mt-header fixed title="vue项目"></mt-header>
-        {{name}}
-	<!-- 在页面改变锚点值 -->
-        <!-- <router-link to="/login">登录</router-link>
-        <router-link to="/register">注册</router-link> -->
 	<!-- 设置路由站位符 -->
-        <router-view></router-view> 
-	
-	<!-- 使用mui 完成底部选项卡 -->
+        <router-view></router-view>
+
+	<!-- 使用mui 完成底部选项卡 --> 
 	<nav class="mui-bar mui-bar-tab">
 		<router-link class="mui-tab-item mui-active" to="/home">
 			<span class="mui-icon mui-icon-home"></span>
@@ -44,7 +40,7 @@ export default {
     return {
       name: "人生不过一场场的遇见."
     };
-  } 
+  }
 };
 </script>
 <style scoped>

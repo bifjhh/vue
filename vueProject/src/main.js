@@ -4,15 +4,21 @@ import App from "./APP.vue"; //导入App.vue的vue对象
 import VueRouter from 'vue-router'; //导入vue路由的依赖包
 Vue.use(VueRouter); //在vue中使用路由
 // 导入vue组件
-import home from './component/shopcar/home.vue';
+import home from './component/home.vue';
 import vip from './component/shopcar/vip.vue';
 import search from './component/shopcar/search.vue';
 import goods from './component/shopcar/goods.vue';
+import newslist from './component/news/newslist.vue';
+import newsdetails from './component/news/newsdetails.vue';
 // 定义路由规则
 var router = new VueRouter({
     // 改变路由激活时的class
     linkActiveClass: 'mui-active',
-    routes:[
+    routes: [
+        {
+            path: '',
+            component: home,
+        },
         {
             path: '/home',
             component: home,
@@ -28,7 +34,15 @@ var router = new VueRouter({
         {
             path: '/goods',
             component: goods,
-        }
+        },
+        {
+            path: '/news/newslist',
+            component: newslist,
+        },
+        {
+            path: '/news/newsdetails/:id',
+            component: newsdetails,
+        },
     ]
 })
 
@@ -46,6 +60,11 @@ Vue.use(mintui);
 import '../static/mui/css/mui.css';
 // 引入全局 css
 import '../static/css/site.less'
+// 引入 momentjs
+import moment from 'moment';
+Vue.filter('datefmt', function (input, fmtstring) {
+    return moment(input).format(fmtstring);
+})
 
 // 实例化vue对象并接管id=app 的div 元素上
 new Vue({

@@ -1,6 +1,11 @@
 <template lang="html">
     <div class="temp">
-        会员
+        <mt-header fixed title="会员">
+            <router-link to="/home" slot="left">
+                <mt-button icon="back">返回</mt-button>
+            </router-link>
+            <mt-button icon="more" slot="right"></mt-button>
+        </mt-header>
     </div>
 </template>
 
@@ -9,5 +14,9 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
+.mint-header {
+  background-color: #ccc;
+  color: #3d3d3d;
+}
 </style>

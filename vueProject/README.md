@@ -66,7 +66,36 @@ new Vue({
            
         </mt-swipe>
 ```
-#### 使用vue-resource发送ajax
-- 引入vue-resource 并使用
+### 使用vue-resource发送ajax
+- 安装vue-router: cnpm install vue-router --save
+- 在入口文件中引入vue-resource 并使用
 - 使用git请求数据
 - 判断数据内容并赋值
+### 渲染导航区域
+- 使用MUI-九宫格样式
+- 修改默认样式属性
+- 调整子板块大小
+- 覆盖更改图片
+- 添加路由
+
+#### 添加新闻列表板块
+- 设置新闻板块路由组件
+- 完成样式模板
+- 设置git请求数据
+- 完成渲染
+##### 格式化日期
+- 使用 Moment.js 实现日期格式化功能
+    + 下载依赖包 cnpm install moment --save
+- 由于多个页面都需要这个功能，所以自定义全局过滤器
+- 在入口文件中 引入包
+- 定义全局过滤器，设置传入参数
+```javascript
+// 引入 momentjs
+import moment from 'moment';
+// 定义全局过滤器，设置传入参数
+Vue.filter('datefmt',function(input,fmtstring){
+    return moment(input).format(fmtstring); 
+})
+```
+- 使用过滤器
+        {{v.add_time | datefmt('YYYY-MM-DD HH:mm:ss')}}
