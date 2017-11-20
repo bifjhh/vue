@@ -67,7 +67,7 @@ new Vue({
         </mt-swipe>
 ```
 ### 使用vue-resource发送ajax
-- 安装vue-router: cnpm install vue-router --save
+- 安装vue-resource: cnpm install vue-resource --save
 - 在入口文件中引入vue-resource 并使用
 - 使用git请求数据
 - 判断数据内容并赋值
