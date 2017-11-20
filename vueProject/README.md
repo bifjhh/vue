@@ -38,3 +38,23 @@ new Vue({
     + cnpm install yarn -g    
 - 使用yarn查询版本
     + yarn info webpack
+
+## 页面结构
+- 使用mint-ui的header组件完成头部    
+- 页面主体使用路由占位符
+- 使用mui 完成底部选项卡
+### 底部选项卡激活
+- 将默认选项卡的a标签更改为router-link
+- 将href更改为to
+- 使用linkActiveClass:改变激活时的class
+- 设置全局样式，组件减去head 和 底部 的 高度 防止组件内容被遮挡
+### mint-ui-Swipe完成轮播图
+- 复制Swipe轮播图基础用法的结构到home组件内
+    + 具体属性参考文档https://mint-ui.github.io/docs/#/zh-cn2/swipe
+- 设置Swipe的基础样式（因为Swipe轮播图没有基本样式）
+- 使用模拟图片数据
+- 使用v-for生成模板
+#### 使用vue-resource发送ajax
+- 引入vue-resource 并使用
+- 使用git请求数据
+- 判断数据内容并赋值

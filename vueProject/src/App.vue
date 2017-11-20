@@ -1,50 +1,35 @@
 <!-- 整个项目的根组件 -->
 <template>
-    <div>
         <!-- 页面结构 -->
-        
-        <mt-header title="标题过长会隐藏后面">
-          <router-link to="/" slot="left">
-            <mt-button icon="back">返回</mt-button>
-          </router-link>
-          <mt-button icon="more" slot="right"></mt-button>
-        </mt-header>
+    <div>
+        <!-- 使用mint-ui的header组件完成头部 -->
+        <mt-header fixed title="vue项目"></mt-header>
         {{name}}
 	<!-- 在页面改变锚点值 -->
-        <router-link to="/login">登录</router-link>
-        <router-link to="/register">注册</router-link>
-        <router-view></router-view>
-        <div class="mui-content">
-		        <ul class="mui-table-view mui-grid-view mui-grid-9">
-		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
-		                    <span class="mui-icon mui-icon-home"></span>
-		                    <div class="mui-media-body">Home</div></a></li>
-		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
-		                    <span class="mui-icon mui-icon-email"><span class="mui-badge">5</span></span>
-		                    <div class="mui-media-body">Email</div></a></li>
-		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
-		                    <span class="mui-icon mui-icon-chatbubble"></span>
-		                    <div class="mui-media-body">Chat</div></a></li>
-		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
-		                    <span class="mui-icon mui-icon-location"></span>
-		                    <div class="mui-media-body">location</div></a></li>
-		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
-		                    <span class="mui-icon mui-icon-search"></span>
-		                    <div class="mui-media-body">Search</div></a></li>
-		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
-		                    <span class="mui-icon mui-icon-phone"></span>
-		                    <div class="mui-media-body">Phone</div></a></li>
-		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
-		                    <span class="mui-icon mui-icon-gear"></span>
-		                    <div class="mui-media-body">Setting</div></a></li>
-		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
-		                    <span class="mui-icon mui-icon-info"></span>
-		                    <div class="mui-media-body">about</div></a></li>
-		           <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
-		                    <span class="mui-icon mui-icon-more"></span>
-		                    <div class="mui-media-body">more</div></a></li>
-		        </ul> 
-		</div>
+        <!-- <router-link to="/login">登录</router-link>
+        <router-link to="/register">注册</router-link> -->
+	<!-- 设置路由站位符 -->
+        <router-view></router-view> 
+	
+	<!-- 使用mui 完成底部选项卡 -->
+	<nav class="mui-bar mui-bar-tab">
+		<router-link class="mui-tab-item mui-active" to="/home">
+			<span class="mui-icon mui-icon-home"></span>
+			<span class="mui-tab-label">首页</span>
+		</router-link>
+		<router-link class="mui-tab-item" to="/vip">
+			<span class="mui-icon mui-icon-email"></span>
+			<span class="mui-tab-label">会员</span>
+		</router-link>
+		<router-link class="mui-tab-item" to="/goods">
+			<span class="mui-icon mui-icon-contact"><span class="mui-badge">0</span></span>
+			<span class="mui-tab-label">购物车</span>
+		</router-link>
+		<router-link class="mui-tab-item" to="/search">
+			<span class="mui-icon mui-icon-gear"></span>
+			<span class="mui-tab-label">搜索</span>
+		</router-link>
+	</nav>
     </div>
     <!-- 由于是vue2.0 所以这个里面一定要放一个根元素，可以放vue的指令 v- -->
 </template>
@@ -59,7 +44,7 @@ export default {
     return {
       name: "人生不过一场场的遇见."
     };
-  }
+  } 
 };
 </script>
 <style scoped>
