@@ -3,7 +3,7 @@
         <!-- 轮播图 -->
         <mt-swipe :auto="3000">
             <!-- <mt-swipe-item>1</mt-swipe-item> -->
-            <mt-swipe-item v-for='v in list'>
+            <mt-swipe-item v-for='v in list' :key="v.id">
                 <!-- 因为直接使用差值表达式无法解析,所以使用v-bind进行绑定 -->
                 <a :href="v.url"> <!-- 绑定a标签跳转链接 -->
                     <img :src="v.img"><!-- 绑定图片属性 -->
