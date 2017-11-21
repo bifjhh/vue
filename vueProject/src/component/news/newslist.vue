@@ -57,7 +57,11 @@ export default {
         var data = res.body;
         if (data.status != 0) {
           //   判断数据是否正常，否的话则阻断之后的函数运行
-          Toast("提示信息");
+          Toast({
+            message: "获取内容出错",
+            position: "bottom",
+            duration: 2000
+          });
           return;
         }
         //   数据正常则 给list 赋值
@@ -70,10 +74,6 @@ export default {
 </script>
 
 <style lang="css" scoped>
-.mint-header {
-  background-color: #ccc;
-  color: #3d3d3d;
-}
 .mui-table-view img {
   height: 80px;
   width: 80px;
