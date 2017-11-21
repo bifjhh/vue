@@ -104,9 +104,11 @@ Vue.filter('datefmt',function(input,fmtstring){
 ##### 获取图文详情
 - 设置新闻列表 
         <router-link v-bind="{to:'/news/newsdetails/' + v.id}"> 
-    + 设置点击时跳转到指定路由    
-- 配置图文详情路由规则及相应组件
+    + 设置点击时跳转到指定路由   
+- 创建新的图文详情组件     
+    + 并在入口文件中配置路由规则及相应组件
 - 利用路由参数的传值，配置路由详情组件
+        this.id = this.$route.params.id;
 - 在点击时获取路由参数的值（传入点击时的id）
 - 根据传入的id进行ajax请求
 - 将返回的数据接收并渲染到页面               
