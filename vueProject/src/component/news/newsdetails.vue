@@ -1,6 +1,6 @@
 <template lang="html">
     <div class="temp">
-        <mt-header fixed :title="info.title">
+        <mt-header fixed title="资讯详情">
             <router-link to="/news/newslist" slot="left">
                 <mt-button icon="back">返回</mt-button>
             </router-link>
@@ -34,12 +34,15 @@ export default {
         var data = res.body;
         if (data.status != 0) {
           //   判断数据是否正常，否的话则阻断之后的函数运行
-          Toast("提示信息");
+          Toast({
+            message: "获取内容出错",
+            position: "bottom",
+            duration: 2000
+          });
           return;
         }
         //   数据正常则 给list 赋值
         this.info = data.message[0];
-        console.log(this.info);
       });
     }
   }
@@ -47,11 +50,18 @@ export default {
 </script>
 
 <style lang="css" scoped>
-.mint-header {
+/* .mint-header {
   background-color: #ccc;
   color: #3d3d3d;
+} */
+.temp{
+  padding:0 5px;
+}
+.title{
+  margin-top: 50px;
 }
 img {
   width: 100%;
 }
+
 </style>
